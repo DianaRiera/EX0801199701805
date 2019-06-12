@@ -27,5 +27,10 @@ thingsCollection.push(
 router.get('/', (req, res, next)=>{
     res.status(200).json(thingsCollection);
 });
+router.post('/', (req, res, next)=>{
+    var newElement = Object.assign(thingsStructure, req.body, {"id": new Date().getTime()});
+    thingsCollection.push(newElement);
+    res.status(200).json(newElement);
+});
 
 module.exports = router;
